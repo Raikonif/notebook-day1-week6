@@ -1,20 +1,19 @@
-def mask_array(data, mask, mask_value='*', fill_value=-999999):
-    counter = 0
-    if len(data) < len(mask):
-        diff = len(mask) - len(data)
-        for i in range(diff):
-            data.append(fill_value)
-    for m in mask:
-        if m and data[counter] != fill_value:
-            data[counter] = mask_value
-        counter += 1
-    print(data)
-    return data
+def masked_less(arr, number):
+    for i in range(len(arr)):
+        if arr[i] < number:
+            arr[i] = '--'
+    print(arr)
+    return arr
 
 
 if __name__ == "__main__":
-    data = [1, 2, 3, 4, 5, 6, 7, 8]
-    mask = [False, False, False, True, True, True, False, False, True, True]
-    expected = [1, 2, 3, '--', '--', '--', 7, 8, 9999999, 9999999]
-    ma_arr = mask_array(data, mask, mask_value='--', fill_value=9999999)
-    assert expected == ma_arr, f'Expected mask array is {expected}'
+    arr = [1, 2, 3, 4, 5, 6, 7, 8]
+    ma_arr = masked_less(arr, 4)
+
+    assert len(ma_arr) == len(arr), f"Expected len is {len(arr)}"
+
+    expected_data = ['--', '--', '--', 4, 5, 6, 7, 8]
+    assert ma_arr == expected_data, f"Expected list is {expected_data}"
+
+    expected_sum = 30
+    assert sum([e for e in ma_arr if type(e) is int]) == expected_sum, f'Expected sum is {expected_sum}'
