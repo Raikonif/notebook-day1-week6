@@ -9,7 +9,7 @@ def discover_data_files(path='../data', pattern='csv'):
 
 def read_file(files):
     readers = []
-    for  f in files:
+    for f in files:
         csv_file = open(f, encoding='UTF-16')
         readers.append((f, csv.reader(csv_file, delimiter='\t')))
     return readers
