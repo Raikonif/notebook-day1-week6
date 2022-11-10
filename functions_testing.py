@@ -1,24 +1,43 @@
-# Given a list of **N** numbers, use a single list comprehension to produce a new list that only contains those
-# values that are:
+## Exercise 8
+
+# Caesar Cipher
 #
-# (a) even numbers, and
+# A Caesar cipher is a simple substitution cipher in which each letter of the plain text is substituted with a letter
+# found by moving n places down the alphabet. For example, assume the input plain text is the following:
 #
-# (b) from elements in the original list that had even indices
+# `abcd xyz`
 #
-# For example, if `list[2]` contains a value that is even, that value should be included in the new list, since it is
-# also at an even index (i.e., 2) in the original list.
 #
-# However, if `list[3]` contains an even number, that number should not be included in the new list since it is at an
-# odd index (i.e., 3) in the original list.
-numbers = [1, 3, 5, 8, 10, 13, 18, 36, 78]
-expected_result = [10, 18, 78]
+# If the shift value, n, is 4, then the encrypted text would be the following:
+#
+# `efgh bcd`
+#
+# You are to write a function that accepts two arguments, a plain-text message and a number of letters to shift in
+# the cipher.
+#
+# The function will return an encrypted string with all letters transformed and all punctuation and whitespace
+# remaining unchanged.
+#
+# Note: You can assume the plain text is all lowercase ASCII except for whitespace and punctuation.
+
+alphabet = "abcdefghijklmnopqrstuvwxyz"
 
 
-def get_even_numbers():
-    return [number for i, number in enumerate(numbers) if number % 2 == 0 and i % 2 == 0]
+def caesar_cipher(plain_text, shift):
+    new_text = ""
+    for char in plain_text:
+        if char in alphabet:
+            index = alphabet.find(char)
+            new_index = (index + shift) % 26
+            # print(alphabet[new_index], end="")
+            new_text += alphabet[new_index]
+        else:
+            print(char, end="")
+            new_text += char
+    return new_text
 
 
-if __name__ == "__main__":
-    get_even_numbers()
-    print(get_even_numbers())
-    assert get_even_numbers() == expected_result
+if __name__ == '__main__':
+    # caesar_cipher('abcd xyz', 4)
+    print(caesar_cipher('abcd xyz', 4))
+    print(caesar_cipher('efgh bcd', -4))
