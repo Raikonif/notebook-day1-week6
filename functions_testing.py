@@ -1,19 +1,24 @@
-def masked_less(arr, number):
-    for i in range(len(arr)):
-        if arr[i] < number:
-            arr[i] = '--'
-    print(arr)
-    return arr
+# Given a list of **N** numbers, use a single list comprehension to produce a new list that only contains those
+# values that are:
+#
+# (a) even numbers, and
+#
+# (b) from elements in the original list that had even indices
+#
+# For example, if `list[2]` contains a value that is even, that value should be included in the new list, since it is
+# also at an even index (i.e., 2) in the original list.
+#
+# However, if `list[3]` contains an even number, that number should not be included in the new list since it is at an
+# odd index (i.e., 3) in the original list.
+numbers = [1, 3, 5, 8, 10, 13, 18, 36, 78]
+expected_result = [10, 18, 78]
+
+
+def get_even_numbers():
+    return [number for i, number in enumerate(numbers) if number % 2 == 0 and i % 2 == 0]
 
 
 if __name__ == "__main__":
-    arr = [1, 2, 3, 4, 5, 6, 7, 8]
-    ma_arr = masked_less(arr, 4)
-
-    assert len(ma_arr) == len(arr), f"Expected len is {len(arr)}"
-
-    expected_data = ['--', '--', '--', 4, 5, 6, 7, 8]
-    assert ma_arr == expected_data, f"Expected list is {expected_data}"
-
-    expected_sum = 30
-    assert sum([e for e in ma_arr if type(e) is int]) == expected_sum, f'Expected sum is {expected_sum}'
+    get_even_numbers()
+    print(get_even_numbers())
+    assert get_even_numbers() == expected_result
