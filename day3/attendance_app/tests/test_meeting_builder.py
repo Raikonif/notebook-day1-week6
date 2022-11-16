@@ -1,4 +1,4 @@
-from src.participant_builder import build_meeting_object
+from day3.attendance_app.src.participant_builder import build_meeting_object
 
 
 def test_build_meeting_object():

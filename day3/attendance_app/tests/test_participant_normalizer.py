@@ -1,5 +1,6 @@
 import pytest
-from src.participant_builder import normalize_participant, resolve_participant_join_last_time, build_participant_object
+from day3.attendance_app.src.participant_builder import normalize_participant, resolve_participant_join_last_time, \
+    build_participant_object
 
 def test_resolve_join_last_time():
     raw_participants = [

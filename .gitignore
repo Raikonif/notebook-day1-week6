@@ -1,3 +1,5 @@
 functions_testing.py
 .idea/
 app/
+.pytest_cache/
+day3/attendance_app/tests/.pytest_cache/

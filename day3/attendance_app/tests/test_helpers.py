@@ -1,5 +1,5 @@
 import pytest
-from src.helpers import  discover_data_files, read_file
+from day3.attendance_app.src.helpers import  discover_data_files, read_file
 
 
 def test_discover_data_files():

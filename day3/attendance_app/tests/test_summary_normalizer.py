@@ -1,5 +1,4 @@
-from src.summary_builder import normalize_summary, build_summary_object
-
+from day3.attendance_app.src.summary_builder import build_summary_object, normalize_summary_keys
 
 def test_normalize_summary_v1():
     raw_data = {
